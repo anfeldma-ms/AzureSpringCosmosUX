@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import reactor.core.publisher.Flux;
 
 import java.util.Iterator;
 
@@ -18,10 +17,7 @@ public class SampleApplication implements CommandLineRunner {
     private final Logger logger = LoggerFactory.getLogger(SampleApplication.class);
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private ReactiveUserRepository reactiveUserRepository;
+    private projectRepository projectRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SampleApplication.class, args);
@@ -29,52 +25,43 @@ public class SampleApplication implements CommandLineRunner {
 
     public void run(String... var1) {
 
-        final User testUser1 = new User("testId1", "testFirstName", "testLastName1");
-        final User testUser2 = new User("testId2", "testFirstName", "testLastName2");
+        viewProject("","");
 
-        logger.info("Using sync repository");
-
-        // <Delete>
-
-        userRepository.deleteAll();
-
-        // </Delete>
-
-        // <Create>
-
-        logger.info("Saving user : {}", testUser1);
-        userRepository.save(testUser1);
-
-        // </Create>
-
-        logger.info("Saving user : {}", testUser2);
-        userRepository.save(testUser2);
-
-        // <Read>        
-        
-        // to find by Id, please specify partition key value if collection is partitioned
-        final User result = userRepository.findByIdAndLastName(testUser1.getId(), testUser1.getLastName());
-        logger.info("Found user : {}", result);
-        
-        // </Read>        
-        
-        Iterator<User> usersIterator = userRepository.findByFirstName("testFirstName").iterator();
-
-        logger.info("Users by firstName : testFirstName");
-        while (usersIterator.hasNext()) {
-            logger.info("user is : {}", usersIterator.next());
+        createProject("","","");
+        String projMan = viewProject("","");
+        if (projMan != "") {
+            logger.error("Error: project manager {} does not match expected value {}.", "", "");
         }
 
-        logger.info("Using reactive repository");
-
-        // <Query>
-
-        Flux<User> users = reactiveUserRepository.findByFirstName("testFirstName");
-        users.map(u -> {
-            logger.info("user is : {}", u);
-            return u;
-        }).subscribe();
-
-        // </Query>
+        createProject("","","");
+        projMan = viewProject("","");
+        if (projMan != "") {
+            logger.error("Error: project manager {} does not match expected value {}.", "", "");
+        }
+        int projCount = projectSearch("","");
+        if (projCount != 3) {
+            logger.error("Error: project count {} does not match desired value {}",projCount, 3);
+        }
     }
+
+    private void createProject(String id, String projectManager, String projectStartDate) {
+        // Your code here
+        projectRepository.save(new Project(id, projectManager, projectStartDate));
+    }
+
+    private String viewProject(String id, String projectStartDate) {
+        // Your code here
+        return "";
+    }
+
+    private void deleteProject(String id, String projectManager, String projectStartDate) {
+        // Your code here
+        projectRepository.delete(new Project(id, projectManager, projectStartDate));
+    }
+
+    private int projectSearch(String searchTerm, String startDate) {
+        // Your code here
+        return projectRepository.getProjectsBySearchTermAndEarliestDate(searchTerm, startDate).size();
+    }
+
 }
