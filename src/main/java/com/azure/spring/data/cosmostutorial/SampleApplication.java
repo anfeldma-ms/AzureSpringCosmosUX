@@ -46,7 +46,6 @@ public class SampleApplication implements CommandLineRunner {
 
     private void createProject(String id, String projectManager, String projectStartDate) {
         // Your code here
-        projectRepository.save(new Project(id, projectManager, projectStartDate));
     }
 
     private String viewProject(String id, String projectStartDate) {
@@ -56,12 +55,11 @@ public class SampleApplication implements CommandLineRunner {
 
     private void deleteProject(String id, String projectManager, String projectStartDate) {
         // Your code here
-        projectRepository.delete(new Project(id, projectManager, projectStartDate));
     }
 
     private int projectSearch(String searchTerm, String startDate) {
         // Your code here
-        return projectRepository.getProjectsBySearchTermAndEarliestDate(searchTerm, startDate).size();
+        return 0;
     }
 
 }
