@@ -9,18 +9,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Iterator;
-
 @SpringBootApplication
-public class SampleApplication implements CommandLineRunner {
+public class ContosoClient implements CommandLineRunner {
 
-    private final Logger logger = LoggerFactory.getLogger(SampleApplication.class);
+    private final Logger logger = LoggerFactory.getLogger(ContosoClient.class);
 
     @Autowired
-    private projectRepository projectRepository;
+    private ProjectRepository projectRepository;
 
     public static void main(String[] args) {
-        SpringApplication.run(SampleApplication.class, args);
+        SpringApplication.run(ContosoClient.class, args);
     }
 
     public void run(String... var1) {
