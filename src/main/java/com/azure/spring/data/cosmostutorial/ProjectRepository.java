@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface projectRepository extends CosmosRepository<Project, String> {
+public interface ProjectRepository extends CosmosRepository<Project, String> {
 
     // Your code here
 

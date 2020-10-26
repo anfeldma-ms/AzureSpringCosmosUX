@@ -5,7 +5,9 @@ package com.azure.spring.data.cosmostutorial;
 import com.azure.spring.data.cosmos.core.mapping.Container;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 
-@Container(containerName = "CONTAINER_NAME_HERE", ru = "10000")
+@Container(containerName = "ProjectRecords", ru = "10000")
 public class Project {
+
+// Your code here
 
 }
