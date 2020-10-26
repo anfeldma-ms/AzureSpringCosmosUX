@@ -63,41 +63,20 @@ public class ContosoClient implements CommandLineRunner {
 
     private void createProject(String id, String projectManager, String projectStartDate) {
         // Your code here
-        projectRepository.save(new Project(id, projectManager, projectStartDate));
     }
 
     private String viewProject(String id, String projectStartDate) {
         // Your code here
-        Project project = null;
-        Iterator<Project> project_iterator = projectRepository.findByIdAndProjectStartDate(id, projectStartDate).iterator();
-        if (project_iterator.hasNext()) {
-            project = project_iterator.next();
-            logger.info("viewProject: {}", project);
-        } else {
-            logger.error("Failed to find project.");
-        }
-        return project.getProjectManager();
+        return "";
     }
 
     private void deleteProject(String id, String projectManager, String projectStartDate) {
         // Your code here
-        projectRepository.delete(new Project(id, projectManager, projectStartDate));
     }
 
     private int projectSearch(String searchTerm, String startDate) {
         // Your code here
-
-        Iterator<Project> project_iterator = projectRepository.getProjectsBySearchTermAndEarliestDate(searchTerm, startDate).iterator();
-
-        int num_proj = 0;
-
-        while (project_iterator.hasNext()) {
-            Project project = project_iterator.next();
-            num_proj++;
-            logger.info("projectSeach: {}", project);
-        }
-
-        return num_proj;
+        return 0;
     }
 
 }
