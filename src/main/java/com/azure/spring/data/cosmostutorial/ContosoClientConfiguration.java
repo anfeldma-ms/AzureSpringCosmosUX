@@ -49,7 +49,7 @@ public class ContosoClientConfiguration extends AbstractCosmosConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "testdb";
+        return "ActiveProject";
     }
 
     private static class ResponseDiagnosticsProcessorImplementation implements ResponseDiagnosticsProcessor {

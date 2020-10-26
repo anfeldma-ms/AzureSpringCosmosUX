@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public interface ProjectRepository extends CosmosRepository<Project, String> {
 
-    Iterable<Project> findByFirstName(String firstName);
+    Iterable<Project> findByIdAndProjectStartDate(String id, String projectStartDate);
 
     // Query by search term and earliest start date
     @Query(value = "SELECT * FROM c WHERE CONTAINS(c.id,@searchTerm,true) AND c.projectStartDate > @startDate")
-    List<Project> getProjectsBySearchTermAndEarliestDate(@Param("searchTerm") String searchTerm, @Param("startDate") String startDate);
+    Iterable<Project> getProjectsBySearchTermAndEarliestDate(@Param("searchTerm") String searchTerm, @Param("startDate") String startDate);
 
 }

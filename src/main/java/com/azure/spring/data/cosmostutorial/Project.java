@@ -5,7 +5,7 @@ package com.azure.spring.data.cosmostutorial;
 import com.azure.spring.data.cosmos.core.mapping.Container;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 
-@Container(containerName = "CONTAINER_NAME_HERE", ru = "10000")
+@Container(containerName = "ProjectRecords", ru = "10000")
 public class Project {
     private String id;
     private String projectManager;
@@ -24,7 +24,7 @@ public class Project {
 
     @Override
     public String toString() {
-        return String.format("com.azure.spring.data.cosmos.Project: %s %s, %s", id, projectManager, projectStartDate);
+        return String.format("com.azure.spring.data.cosmostutorial.Project: %s %s, %s", id, projectManager, projectStartDate);
     }
 
     public String getId() {
@@ -43,11 +43,11 @@ public class Project {
         this.projectManager = projectManager;
     }
 
-    public String getLastName() {
+    public String getProjectStartDate() {
         return projectStartDate;
     }
 
-    public void setLastName(String projectStartDate) {
+    public void setProjectStartDate(String projectStartDate) {
         this.projectStartDate = projectStartDate;
     }
 }
