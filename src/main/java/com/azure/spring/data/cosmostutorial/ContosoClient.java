@@ -42,7 +42,6 @@ public class ContosoClient implements CommandLineRunner {
             logger.info("Test: insert/create successful!");
         }
 
-
         // Test update
         createProject("ContosoInternal","Jamison Carlton","2018-01-06T19:21:27.0000000Z");
         projMan = viewProject("ContosoInternal","2018-01-06T19:21:27.0000000Z");
@@ -52,7 +51,10 @@ public class ContosoClient implements CommandLineRunner {
             logger.info("Test: update successful!");
         }
 
-        // Test query
+        // Test delete
+        deleteProject("ContosoInternal", "Carl James", "2018-01-06T19:21:27.0000000Z");
+
+        // Test query (also confirms that delete was successful)
         int projCount = projectSearch("Project","2017-01-02T18:21:27.0000000Z");
         if (projCount != 3) {
             logger.error("Error: project count {} does not match desired value {}", projCount, 3);
