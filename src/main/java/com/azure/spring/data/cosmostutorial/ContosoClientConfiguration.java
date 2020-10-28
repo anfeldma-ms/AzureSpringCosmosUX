@@ -36,7 +36,8 @@ public class ContosoClientConfiguration extends AbstractCosmosConfiguration {
         return new CosmosClientBuilder()
             .endpoint(properties.getUri())
             .key(properties.getKey())
-            .directMode(directConnectionConfig);
+            .directMode(directConnectionConfig)
+            .contentResponseOnWriteEnabled(true);
     }
 
     @Bean
