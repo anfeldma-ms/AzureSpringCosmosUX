@@ -48,17 +48,14 @@ public class ContosoClient implements CommandLineRunner {
 
     private void createProject(String id, String projectManager, String projectStartDate) {
         // Your code here
-        logger.error("createProject is not implemented.");
     }
 
     private String viewProject(String id, String projectStartDate) {
         // Your code here
-        logger.error("viewProject is not implemented.");
         return "";
     }
 
     private void deleteProject(String id, String projectManager, String projectStartDate) {
         // Your code here
-        logger.error("deleteProject is not implemented.");
     }
 }
